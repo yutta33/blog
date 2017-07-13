@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="jp.gr.java_conf.hirady.blog.domain.mapper.EntryMapper">
+
+  <select id="select" parameterType="String" resultType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
+    SELECT
+    id,
+    title,
+    body,
+    category,
+    draft,
+    insert_time,
+    update_time
+    FROM entry
+    WHERE id = #{id}
+  </select>
+
+  <select id="selectAll" resultType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
+    SELECT
+    id,
+    title,
+    body,
+    category,
+    draft,
+    insert_time,
+    update_time
+    FROM entry
+  </select>
+
+  <insert id="insert" parameterType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
+    INSERT INTO entry (id, title, body, category, draft, insert_time)
+    VALUES (#{id}, #{title}, #{body}, #{category}, #{draft}, now())
+  </insert>
+
+  <update id="update" parameterType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
+    UPDATE entry
+    SET title = #{title}
+    , body = #{body}
+    , category = #{category}
+    , draft = #{draft}
+    , update_time = now()
+    WHERE id = #{id}
+  </update>
+
+  <delete id="delete" parameterType="String">
+    delete from entry where id = #{id}
+  </delete>
+</mapper>
