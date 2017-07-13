@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="jp.gr.java_conf.hirady.blog.domain.mapper.EntryMapper">
 
-  <select id="select" parameterType="String" resultType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
+  <select id="select" parameterType="jp.gr.java_conf.hirady.blog.domain.model.Entry" resultType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
     SELECT
     id,
     title,
@@ -14,19 +14,14 @@
     insert_time,
     update_time
     FROM entry
-    WHERE id = #{id}
-  </select>
-
-  <select id="selectAll" resultType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
-    SELECT
-    id,
-    title,
-    body,
-    category,
-    draft,
-    insert_time,
-    update_time
-    FROM entry
+    WHERE
+    '1' = '1'
+    <if test="id != null">
+    AND id = #{id}
+    </if>
+    <if test="category != null">
+    AND  category= #{category}
+    </if>
   </select>
 
   <insert id="insert" parameterType="jp.gr.java_conf.hirady.blog.domain.model.Entry">

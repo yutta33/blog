@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,11 +22,15 @@ import jp.gr.java_conf.hirady.blog.domain.service.EntryService;
 @RequestMapping("/")
 public class EntryController {
 
+  static final Logger logger = LoggerFactory.getLogger(EntryController.class);
+
   @Inject
   EntryService entryService;
 
   @RequestMapping(method = RequestMethod.GET)
   public String init() {
+
+    logger.debug("init !!!");
 
     return "manager/index";
   }

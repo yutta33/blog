@@ -6,9 +6,7 @@ import jp.gr.java_conf.hirady.blog.domain.model.Entry;
 
 public interface EntryMapper {
 
-  public List<Entry> selectAll();
-
-  public Entry select(String id);
+  public List<Entry> select(Entry entry);
 
   public void insert(Entry entry);
 

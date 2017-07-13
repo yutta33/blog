@@ -21,13 +21,22 @@ public class EntryService {
 
   public List<Entry> getEntries() throws Exception {
 
-    return entryMapper.selectAll();
+    return entryMapper.select(null);
 
   }
 
   public Entry findEntry(String id) throws Exception {
 
-    return entryMapper.select(id);
+    Entry searchEntry = new Entry();
+    searchEntry.setId(id);
+
+    List<Entry> result = entryMapper.select(searchEntry);
+
+    if (result == null || result.size() == 0) {
+      return null;
+    }
+
+    return result.get(0);
 
   }
 
@@ -40,8 +49,10 @@ public class EntryService {
       entryMapper.insert(entry);
     } else {
       // 更新
-      Entry findEntry = entryMapper.select(entry.getId());
-      if (findEntry != null) {
+      Entry searchEntry = new Entry();
+      searchEntry.setId(entry.getId());
+      List<Entry> findEntry = entryMapper.select(searchEntry);
+      if (findEntry != null && findEntry.size() > 0) {
         entryMapper.update(entry);
       } else {
         // 更新対象無エラ-
