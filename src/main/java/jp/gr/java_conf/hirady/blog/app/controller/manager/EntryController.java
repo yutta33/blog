@@ -19,7 +19,7 @@ import jp.gr.java_conf.hirady.blog.domain.model.Entry;
 import jp.gr.java_conf.hirady.blog.domain.service.EntryService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/mn")
 public class EntryController {
 
   static final Logger logger = LoggerFactory.getLogger(EntryController.class);

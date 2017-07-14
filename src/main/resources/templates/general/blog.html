@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>blog</title>
+<link rel="stylesheet" href="../../static/dist/siimple.css" th:href="@{/dist/siimple.css}" />
+</head>
+<body>
+<div class="siimple-h4">blog</div>
+<div>
+<p th:text="${entry.title}"></p>
+</div>
+<div>
+<p th:text="${entry.body}"></p>
+</div>
+<div>
+<p th:text="${entry.category}"></p>
+</div>
+
+</body>
+</html>
