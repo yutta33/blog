@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="siimple-h4">記事一覧</div>
-<form role="form" action="/edit" th:action="@{/edit}" th:object="${entryForm}" method="post">
+<form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}" method="post">
 
 <table class="tbtest">
 <tr>
@@ -24,12 +24,12 @@
   <td th:text="${entry.updateTime}"></td>
   <td>
   <div class="siimple-btn siimple-btn--grey">
-    <a th:href="@{'/edit?entry=' + ${entry.id}}">編集</a>
+    <a th:href="@{'/mn/edit?entry=' + ${entry.id}}">編集</a>
    </div>
   </td>
   <td>
   <div class="siimple-btn siimple-btn--grey">
-    <a th:href="@{'/delete?entry=' + ${entry.id}}">削除</a>
+    <a th:href="@{'/mn/delete?entry=' + ${entry.id}}">削除</a>
    </div>
   </td>
 </tr>

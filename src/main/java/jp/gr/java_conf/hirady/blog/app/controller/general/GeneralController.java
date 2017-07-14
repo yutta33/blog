@@ -1,5 +1,6 @@
 package jp.gr.java_conf.hirady.blog.app.controller.general;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,20 +30,27 @@ public class GeneralController {
 
     List<Entry> entries = entryService.getEntries();
 
-    if(entries != null && entries.size() > 0) {
-        model.addAttribute("entry", entries.get(0));
+    if (entries != null) {
+      model.addAttribute("entry", entries.get(0));
+    }
+    if (entries.size() > 1) {
+      model.addAttribute("prev", entries.get(1).getId());
     }
 
     return "general/blog";
   }
 
-  @RequestMapping(value="entry/{id}", method = RequestMethod.GET)
-  public String blog(@PathVariable String id, Model model) throws Exception{
+  @RequestMapping(value = "entry/{id}", method = RequestMethod.GET)
+  public String blog(@PathVariable String id, Model model) throws Exception {
 
     Entry entry = entryService.findEntry(id);
     model.addAttribute("entry", entry);
 
-    return "general/blog";
+    LinkedHashSet<Entry> sets = entryService.selectAll();
+
+
+
+     return "general/blog";
   }
 
 }

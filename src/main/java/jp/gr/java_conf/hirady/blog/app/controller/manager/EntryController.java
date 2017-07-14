@@ -72,7 +72,7 @@ public class EntryController {
     BeanUtils.copyProperties(entryForm, entry);
     entryService.entry(entry);
 
-    return "redirect:/entries";
+    return "redirect:/mn/entries";
   }
 
   @RequestMapping(value = "delete")
@@ -81,7 +81,7 @@ public class EntryController {
 
     entryService.delete(entry);
 
-    return "redirect:/entries";
+    return "redirect:/mn/entries";
   }
 
 }

@@ -24,6 +24,18 @@
     </if>
   </select>
 
+  <select id="selectAll" resultType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
+    SELECT
+    id,
+    title,
+    body,
+    category,
+    draft,
+    insert_time,
+    update_time
+    FROM entry
+  </select>
+
   <insert id="insert" parameterType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
     INSERT INTO entry (id, title, body, category, draft, insert_time)
     VALUES (#{id}, #{title}, #{body}, #{category}, #{draft}, now())

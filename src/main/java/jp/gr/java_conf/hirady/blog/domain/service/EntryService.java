@@ -2,6 +2,7 @@ package jp.gr.java_conf.hirady.blog.domain.service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -22,6 +23,12 @@ public class EntryService {
   public List<Entry> getEntries() throws Exception {
 
     return entryMapper.select(null);
+
+  }
+
+  public LinkedHashSet<Entry> selectAll() throws Exception {
+
+    return entryMapper.selectAll();
 
   }
 
