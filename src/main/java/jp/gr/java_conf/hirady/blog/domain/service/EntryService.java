@@ -70,7 +70,7 @@ public class EntryService {
   private String createId() {
 
     LocalDateTime d = LocalDateTime.now();
-    DateTimeFormatter f = DateTimeFormatter.ofPattern("SSSssmmHHddyyyyMM");
+    DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
     return d.format(f);
   }
