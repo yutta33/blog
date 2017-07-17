@@ -1,6 +1,7 @@
 package jp.gr.java_conf.hirady.blog.app.controller.manager;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
@@ -22,5 +23,7 @@ public class EntryForm {
   private String insertTime;
 
   private String updateTime;
+
+  private MultipartFile file;
 
 }

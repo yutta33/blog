@@ -1,21 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="format-detection" content="telephone=no" />
+<link rel="stylesheet" href="../../static/github-markdown.css" th:href="@{/css/github-markdown.css}" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="../../static/style.css" th:href="@{/css/style.css}" />
 <title>blog</title>
-<link rel="stylesheet" href="../../static/dist/siimple.css" th:href="@{/dist/siimple.css}" />
 </head>
 <body>
-<div class="siimple-h4">blog</div>
-<div>
-<p th:text="${entry.title}"></p>
-</div>
-<div>
-<p th:text="${entry.body}"></p>
-</div>
-<div>
-<p th:text="${entry.category}"></p>
+<article class="markdown-body">
+<header>
+<h1><a href="/">top</a></h1>
+</header>
+
+<h2 th:text="${entry.title}">ブログタイトル</h2>
+
+<div class="entry_date">
+    <p>
+        <span th:text="yyyymmdd">2017年mm月dd日</span>
+    </p>
 </div>
 
+<div class="contents">
+<p th:text="${entry.body}">ブログ本文</p>
+<p>
+    <span><a href="/Tag/Index/tag/%E6%97%A5%E8%A8%98" th:text="${entry.category}">#カテゴリ</a></span>
+</p>
+
+</div>
+<div class="navi">
+<div class="prev"><a href="/1260">ニュートラル &raquo;</a></div>
+<div class="next"><a href="/1260">&laquo; ニュートラル</a></div>
+</div>
+<div>
+<p ></p>
+</div>
+
+
+</article>
 </body>
 </html>

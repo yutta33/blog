@@ -7,7 +7,8 @@
 </head>
 <body>
 <div class="siimple-h4">編集</div>
-<form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}" method="post">
+<form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}"
+method="post" enctype="multipart/form-data">
 
 <input type="hidden" name="id" th:field="*{id}" />
 <div>
@@ -20,10 +21,15 @@
 <input type="text" id="category" name="category" placeholder="カテゴリー" th:field="*{category}" />
 </div>
 
+<div class="file">
+    <input type="file" name="file" />
+</div>
+
 <div class="draft">
   <label>
     <input type="checkbox" name="draft" value="on" th:field="*{draft}" />下書き</label>
 </div>
+
 
 <input type="submit" name="edit" value="保存する" />
 </form>
