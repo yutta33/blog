@@ -43,7 +43,31 @@ public class GeneralController {
   public String blog(@PathVariable String id, Model model) throws Exception {
 
     Entry entry = entryService.findEntry(id);
+
+    if(entry == null) {
+      return "general/blog";
+    }
+
     model.addAttribute("entry", entry);
+
+    List<Entry> entries = entryService.getEntries();
+
+    for(int i = 0; i< entries.size(); i++) {
+
+      Entry current = entries.get(i);
+      if(entry.getId().equals(current.getId())) {
+
+        if(i > 0) {
+          model.addAttribute("next", entries.get( i -1 ).getId());
+        }
+
+        if(i + 1 < entries.size()) {
+          model.addAttribute("prev", entries.get( i + 1 ).getId());
+        }
+
+        break;
+      }
+    }
 
     return "general/blog";
   }

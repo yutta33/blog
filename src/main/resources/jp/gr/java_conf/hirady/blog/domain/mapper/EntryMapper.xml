@@ -22,6 +22,7 @@
     <if test="category != null">
     AND  category= #{category}
     </if>
+    ORDER BY ID DESC
   </select>
 
   <select id="selectAll" resultType="jp.gr.java_conf.hirady.blog.domain.model.Entry">

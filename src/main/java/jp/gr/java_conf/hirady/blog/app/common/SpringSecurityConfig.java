@@ -22,7 +22,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     // 認可
     http.authorizeRequests()
-        .antMatchers("/", "/enrty/**", "/mn", "/css/**").permitAll() // アクセス許可
+        .antMatchers("/", "/entry/**", "/mn", "/css/**").permitAll() // アクセス許可
         .anyRequest().authenticated() // 上記以外は要認証
         .and()
         .formLogin()

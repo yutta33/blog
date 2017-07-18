@@ -38,11 +38,11 @@ saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 </div>
 
 <div class="row">
-<div class="six columns">
-<a href="/1260" class="">ニュートラル &raquo;</a>
+<div class="six columns" >
+<a href="#" th:href="@{'/entry/' + ${prev}}" th:if="${prev != null}">&laquo; 前へ</a>&nbsp;
 </div>
-<div class="six columns" align="right">
-<a href="/1260">&laquo; ニュートラル</a>
+<div class="six columns" align="right" >
+<a href="#" th:href="@{'/entry/' + ${next}}" th:if="${next != null}" >次へ&raquo;</a>&nbsp;
 </div>
 </div >
 <div>
