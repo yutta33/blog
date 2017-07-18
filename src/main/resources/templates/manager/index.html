@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8" />
-<title>ぶろぐ</title>
-<link rel="stylesheet" href="../../static/dist/siimple.css" th:href="@{/dist/siimple.css}" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>blog</title>
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../static/css/normalize.css" th:href="@{/css/normalize.css}" />
+<link rel="stylesheet" href="../../static/css/skeleton.css" th:href="@{/css/skeleton.css}" />
 </head>
 <body>
-<div class="siimple-h4">管理メニュー</div>
-<ul>
-<li class="siimple-btn siimple-btn--grey">
-  <a href="/mn/edit">記事を書く</a>
- </li>
-<li class="siimple-btn siimple-btn--grey">
-  <a href="/mn/entries">記事の管理</a>
- </li>
-<li class="siimple-btn siimple-btn--grey">
-  <a href="/mn/categories">カテゴリー</a>
- </li>
-<li class="siimple-btn siimple-btn--grey">
-  <a href="/mn/account">アカウント設定</a>
- </li>
-</ul>
+  <div class="container">
+
+    <div class="rows" style="margin-top: 10%">
+      <h4>管理メニュー</h4>
+      <ul>
+        <li><a href="/mn/edit">記事を書く</a></li>
+        <li><a href="/mn/entries">記事の管理</a></li>
+        <li><a href="/mn/categories">カテゴリー</a></li>
+        <li><a href="/mn/account">アカウント設定</a></li>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>

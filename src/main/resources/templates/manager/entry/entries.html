@@ -1,40 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>blog</title>
-<link rel="stylesheet" href="../../static/dist/siimple.css" th:href="@{/dist/siimple.css}" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../../static/css/normalize.css"	th:href="@{/css/normalize.css}" />
+<link rel="stylesheet" href="../../../static/css/skeleton.css"	th:href="@{/css/skeleton.css}" />
 </head>
 <body>
-<div class="siimple-h4">記事一覧</div>
-<form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}" method="post">
 
-<table class="tbtest">
-<tr>
-  <th>タイトル</th>
-  <th>登録時間</th>
-  <th>最終更新時間</th>
-  <th></th>
-  <th></th>
-</tr>
+  <div class="container">
 
-<tr th:each="entry : ${entries}">
-  <td th:text="${entry.title}" ></td>
-  <td th:text="${entry.insertTime}"></td>
-  <td th:text="${entry.updateTime}"></td>
-  <td>
-  <div class="siimple-btn siimple-btn--grey">
-    <a th:href="@{'/mn/edit?entry=' + ${entry.id}}">編集</a>
-   </div>
-  </td>
-  <td>
-  <div class="siimple-btn siimple-btn--grey">
-    <a th:href="@{'/mn/delete?entry=' + ${entry.id}}">削除</a>
-   </div>
-  </td>
-</tr>
-</table>
+    <form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}" method="post">
 
-</form>
+      <div class="rows" style="margin-top: 10%">
+        <h4>記事一覧</h4>
+        <table class="u-full-width">
+          <tr>
+            <th>タイトル</th>
+            <th>登録時間</th>
+            <th>最終更新時間</th>
+            <th></th>
+          </tr>
+
+          <tr th:each="entry : ${entries}">
+            <td th:text="${entry.title}">タイトル</td>
+            <td th:text="${entry.insertTime}">2017/12/17</td>
+            <td th:text="${entry.updateTime}">2017/12/31</td>
+            <td>
+                <a th:href="@{'/mn/edit?entry=' + ${entry.id}}">編集</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/mn/delete?entry=' + ${entry.id}}">削除</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </form>
+
+  </div>
 </body>
 </html>

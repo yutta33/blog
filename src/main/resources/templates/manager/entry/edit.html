@@ -1,37 +1,37 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>blog</title>
-<link rel="stylesheet" href="../../static/dist/siimple.css" th:href="@{/dist/siimple.css}" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../../static/css/normalize.css"  th:href="@{/css/normalize.css}" />
+<link rel="stylesheet" href="../../../static/css/skeleton.css"  th:href="@{/css/skeleton.css}" />
 </head>
 <body>
-<div class="siimple-h4">編集</div>
-<form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}"
-method="post" enctype="multipart/form-data">
+  <div class="container">
 
-<input type="hidden" name="id" th:field="*{id}" />
-<div>
-<input id="title" name="title" type="text" placeholder="タイトル" th:field="*{title}"  />
-</div>
-<div>
-<textarea id="body" name="body" rows="" cols="" placeholder="本文" th:field="*{body}"></textarea>
-</div>
-<div>
-<input type="text" id="category" name="category" placeholder="カテゴリー" th:field="*{category}" />
-</div>
+    <form role="form" action="#" method="post" enctype="multipart/form-data" th:action="@{/mn/edit}" th:object="${entryForm}" >
 
-<div class="file">
-    <input type="file" name="file" />
-</div>
+      <div class="row" style="margin-top: 10%">
+          <h4>編集</h4>
+          <input type="text" class="u-full-width"  id="title" name="title" placeholder="タイトル" th:field="*{title}" />
 
-<div class="draft">
-  <label>
-    <input type="checkbox" name="draft" value="on" th:field="*{draft}" />下書き</label>
-</div>
+          <textarea class="u-full-width"  id="body" name="body"  placeholder="本文" th:field="*{body}"  ></textarea>
 
+          <input type="text" id="category" name="category" placeholder="カテゴリー" th:field="*{category}" />
 
-<input type="submit" name="edit" value="保存する" />
-</form>
+          <input type="file" name="file" />
+
+          <label>
+            <input type="checkbox" name="draft" value="on">
+            <span class="label-body">下書き</span>
+          </label>
+          <input type="submit" class="button-primary" name="edit"  value="保存する" />
+      </div>
+      <input type="hidden" name="id" th:field="*{id}" />
+    </form>
+  </div>
 </body>
 </html>
