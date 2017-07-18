@@ -10,17 +10,30 @@
 <link rel="stylesheet" href="../../static/css/skeleton.css" th:href="@{/css/skeleton.css}" />
 </head>
 <body>
-  <div class="container">
+<div class="container">
 
-    <div class="rows" style="margin-top: 10%">
-      <h4>管理メニュー</h4>
+  <div class="row" style="margin-top: 10%">
+  </div>
+
+  <div class="row">
+
+    <div class="two columns" th:replace="common/layout::menu" >
       <ul>
         <li><a href="/mn/edit">記事を書く</a></li>
         <li><a href="/mn/entries">記事の管理</a></li>
-        <li><a href="/mn/categories">カテゴリー</a></li>
-        <li><a href="/mn/account">アカウント設定</a></li>
+        <li><a href="/mn/categories">カテゴリ</a></li>
+        <li><a href="/mn/account">アカウント</a></li>
       </ul>
     </div>
+
+    <div class="ten columns" >
+      <h4>TOP</h4>
+    </div>
   </div>
+
+  <div class="row" style="margin-top: 5%">
+  </div>
+
+</div>
 </body>
 </html>

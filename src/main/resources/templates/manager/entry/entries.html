@@ -10,35 +10,51 @@
 <link rel="stylesheet" href="../../../static/css/skeleton.css"	th:href="@{/css/skeleton.css}" />
 </head>
 <body>
+<div class="container">
 
-  <div class="container">
-
-    <form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}" method="post">
-
-      <div class="rows" style="margin-top: 10%">
-        <h4>記事一覧</h4>
-        <table class="u-full-width">
-          <tr>
-            <th>タイトル</th>
-            <th>登録時間</th>
-            <th>最終更新時間</th>
-            <th></th>
-          </tr>
-
-          <tr th:each="entry : ${entries}">
-            <td th:text="${entry.title}">タイトル</td>
-            <td th:text="${entry.insertTime}">2017/12/17</td>
-            <td th:text="${entry.updateTime}">2017/12/31</td>
-            <td>
-                <a th:href="@{'/mn/edit?entry=' + ${entry.id}}">編集</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/mn/delete?entry=' + ${entry.id}}">削除</a>
-            </td>
-          </tr>
-        </table>
-      </div>
-
-    </form>
-
+  <div class="row" style="margin-top: 10%">
   </div>
+
+  <div class="row">
+
+    <div class="two columns" th:replace="common/layout::menu" >
+      <ul>
+        <li><a href="#">記事を書く</a></li>
+        <li><a href="#">記事の管理</a></li>
+        <li><a href="#">カテゴリ</a></li>
+        <li><a href="#">アカウント</a></li>
+      </ul>
+    </div>
+
+    <div class="ten columns" >
+      <form role="form" action="/mn/edit" th:action="@{/mn/edit}" th:object="${entryForm}" method="post">
+
+          <h4>記事一覧</h4>
+          <table class="u-full-width">
+            <tr>
+              <th>タイトル</th>
+              <th>登録時間</th>
+              <th>最終更新時間</th>
+              <th></th>
+            </tr>
+
+            <tr th:each="entry : ${entries}">
+              <td th:text="${entry.title}">タイトル</td>
+              <td th:text="${entry.insertTime}">2017/12/17</td>
+              <td th:text="${entry.updateTime}">2017/12/31</td>
+              <td>
+                  <a th:href="@{'/mn/edit?entry=' + ${entry.id}}">編集</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a th:href="@{'/mn/delete?entry=' + ${entry.id}}">削除</a>
+              </td>
+            </tr>
+          </table>
+      </form>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 5%">
+  </div>
+
+</div>
 </body>
 </html>
