@@ -1,6 +1,5 @@
 package jp.gr.java_conf.hirady.blog.app.controller.general;
 
-import java.util.LinkedHashSet;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -46,11 +45,7 @@ public class GeneralController {
     Entry entry = entryService.findEntry(id);
     model.addAttribute("entry", entry);
 
-    LinkedHashSet<Entry> sets = entryService.selectAll();
-
-
-
-     return "general/blog";
+    return "general/blog";
   }
 
 }

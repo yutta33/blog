@@ -78,12 +78,10 @@ public class EntryController {
       return "manager/entry/edit";
     }
 
-    if(entryForm.getFile() != null && !entryForm.getFile().isEmpty()){
-      //ファイルアップロード
+    if (entryForm.getFile() != null && !entryForm.getFile().isEmpty()) {
       upload(entryForm.getFile());
     }
 
-    // 登録
     Entry entry = new Entry();
     BeanUtils.copyProperties(entryForm, entry);
     entryService.entry(entry);
@@ -100,25 +98,18 @@ public class EntryController {
     return "redirect:/mn/entries";
   }
 
- public void upload(@RequestParam MultipartFile file) throws ApplicationException
- {
-   try {
-     InputStream in = file.getInputStream();
+  private void upload(@RequestParam MultipartFile file) throws ApplicationException {
+    try {
+      InputStream in = file.getInputStream();
+      File uploadfile = new File(dir);
 
-     File uploadfile = new File(dir);
-     if (!uploadfile.exists()) {
-       uploadfile.mkdirs();
-     }
+      String path = root + dir + "/" + file.getOriginalFilename();
+      uploadfile = new File(path);
+      FileCopyUtils.copy(in, new FileOutputStream(uploadfile));
 
-     String path = root + dir + "/" + file.getOriginalFilename();
-     uploadfile = new File(path);
-     FileCopyUtils.copy(in, new FileOutputStream(uploadfile));
-
-   } catch (IOException e) {
-     throw new RuntimeException("Error uploading file.", e);
-   }
- }
-
-
+    } catch (IOException e) {
+      throw new RuntimeException("Error uploading file.", e);
+    }
+  }
 
 }
