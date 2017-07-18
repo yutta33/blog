@@ -45,6 +45,14 @@ public class EntryController {
     return "manager/index";
   }
 
+  @RequestMapping(value="top", method = RequestMethod.GET)
+  public String top() {
+
+    logger.debug("init !!!");
+
+    return "manager/top";
+  }
+
   @RequestMapping(value = "entries")
   public String entries(Model model) throws Exception {
 

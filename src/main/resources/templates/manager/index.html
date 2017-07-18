@@ -6,34 +6,31 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="../../static/css/normalize.css" th:href="@{/css/normalize.css}" />
-<link rel="stylesheet" href="../../static/css/skeleton.css" th:href="@{/css/skeleton.css}" />
+<link rel="stylesheet" href="../../static/css/normalize.css"  th:href="@{/css/normalize.css}" />
+<link rel="stylesheet" href="../../static/css/skeleton.css"  th:href="@{/css/skeleton.css}" />
 </head>
 <body>
-<div class="container">
+  <div class="container">
 
-  <div class="row" style="margin-top: 10%">
-  </div>
+    <div class="row" style="margin-top: 10%">
+      <h4>ログイン</h4>
+      <form id="login_form" method="post" th:action="@{'/login'}">
+          <div class="form-group">
+            <input type="text" class="form-control" id="login_id" name="login_id" placeholder=" ID"
+              autofocus="autofocus" required="required" />
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="login_password" name="login_password" placeholder="パスワード" required="required" />
+          </div>
+          <div class="form-group">
+            <input id="login_button" type="submit" value="ログイン" />
+          </div>
+      </form>
 
-  <div class="row">
-
-    <div class="two columns" th:replace="common/layout::menu" >
-      <ul>
-        <li><a href="/mn/edit">記事を書く</a></li>
-        <li><a href="/mn/entries">記事の管理</a></li>
-        <li><a href="/mn/categories">カテゴリ</a></li>
-        <li><a href="/mn/account">アカウント</a></li>
-      </ul>
     </div>
 
-    <div class="ten columns" >
-      <h4>TOP</h4>
-    </div>
-  </div>
+    <div class="row" style="margin-top: 5%"></div>
 
-  <div class="row" style="margin-top: 5%">
   </div>
-
-</div>
 </body>
 </html>
