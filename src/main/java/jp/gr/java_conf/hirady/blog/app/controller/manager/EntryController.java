@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -40,15 +41,11 @@ public class EntryController {
   @RequestMapping(method = RequestMethod.GET)
   public String init() {
 
-    logger.debug("init !!!");
-
     return "manager/index";
   }
 
   @RequestMapping(value="top", method = RequestMethod.GET)
   public String top() {
-
-    logger.debug("init !!!");
 
     return "manager/top";
   }
@@ -74,6 +71,8 @@ public class EntryController {
     }
 
     model.addAttribute(entryForm);
+    List<String> categories = entryService.getCategories();
+    model.addAttribute("categories", categories);
 
     return "manager/entry/edit";
   }
@@ -83,6 +82,8 @@ public class EntryController {
 
     if (result.hasErrors()) {
       model.addAttribute(entryForm);
+      List<String> categories = entryService.getCategories();
+      model.addAttribute("categories", categories);
       return "manager/entry/edit";
     }
 
@@ -91,11 +92,16 @@ public class EntryController {
     }
 
     Entry entry = new Entry();
-    BeanUtils.copyProperties(entryForm, entry);
+    entry.setId(StringUtils.trim(entryForm.getId()));
+    entry.setTitle(StringUtils.trim(entryForm.getTitle()));
+    entry.setBody(StringUtils.trim(entryForm.getBody()));
+    entry.setCategory(StringUtils.trim(entryForm.getCategory()));
+    entry.setDraft(entryForm.isDraft());
     entryService.entry(entry);
 
     return "redirect:/mn/entries";
   }
+
 
   @RequestMapping(value = "delete")
   public String delete(
@@ -105,6 +111,7 @@ public class EntryController {
 
     return "redirect:/mn/entries";
   }
+
 
   private void upload(@RequestParam MultipartFile file) throws ApplicationException {
     try {

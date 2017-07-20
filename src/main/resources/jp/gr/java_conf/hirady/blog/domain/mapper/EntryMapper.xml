@@ -37,6 +37,13 @@
     FROM entry
   </select>
 
+  <select id="selectCategories" parameterType="string" resultType="string">
+    SELECT
+    category
+    FROM entry
+    group by category;
+  </select>
+
   <insert id="insert" parameterType="jp.gr.java_conf.hirady.blog.domain.model.Entry">
     INSERT INTO entry (id, title, body, category, draft, insert_time)
     VALUES (#{id}, #{title}, #{body}, #{category}, #{draft}, now())

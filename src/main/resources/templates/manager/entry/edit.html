@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../../static/css/normalize.css"  th:href="@{/css/normalize.css}" />
 <link rel="stylesheet" href="../../../static/css/skeleton.css"  th:href="@{/css/skeleton.css}" />
+<link rel="stylesheet" href="../../../static/css/style.css"  th:href="@{/css/style.css}" />
 </head>
 <body>
 <div class="container">
@@ -30,11 +31,21 @@
       <form role="form" action="#" method="post" enctype="multipart/form-data" th:action="@{/mn/edit}" th:object="${entryForm}" >
 
             <h4>編集</h4>
-            <input type="text" class="u-full-width"  id="title" name="title" placeholder="タイトル" th:field="*{title}" />
 
-            <textarea class="u-full-width"  id="body" name="body"  placeholder="本文" th:field="*{body}"  ></textarea>
+            <div class="l_bottom">
+            <input type="text" class="u-full-width"  id="title" name="title" placeholder="タイトル" th:field="*{title}" />
+            </div>
+
+            <div class="l_bottom">
+            <textarea style="height: 200px" class="u-full-width"  id="body" name="body" cols="" rows="10"  placeholder="本文" th:field="*{body}"  ></textarea>
+            </div>
 
             <input type="text" id="category" name="category" placeholder="カテゴリー" th:field="*{category}" />
+
+            <select id="category" name="category">
+                <option value="">登録済みカテゴリ</option>
+                <option th:each="cate : ${categories}" th:value="${cate}" th:selected="${cate == id}" th:inline="text">[[${cate}]]</option>
+            </select>
 
             <input type="file" name="file" />
 
@@ -42,7 +53,7 @@
               <input type="checkbox" name="draft" value="on" />
               <span class="label-body">下書き</span>
             </label>
-            <input type="submit" class="button-primary" name="edit"  value="保存する" />
+            <input type="submit" name="edit"  value="保存する" />
         <input type="hidden" name="id" th:field="*{id}" />
       </form>
     </div>

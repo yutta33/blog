@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>blog</title>
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="../../../static/css/normalize.css"  th:href="@{/css/normalize.css}" />
+<link rel="stylesheet" href="../../../static/css/skeleton.css"  th:href="@{/css/skeleton.css}" />
+</head>
+<body>
+<div class="container">
+
+  <div class="header" style="margin-top: 10%">
+  </div>
+
+  <div class="row">
+
+    <div class="two columns" th:replace="common/layout::menu" >
+      <ul>
+        <li><a href="#">記事を書く</a></li>
+        <li><a href="#">記事の管理</a></li>
+        <li><a href="#">カテゴリ</a></li>
+        <li><a href="#">アカウント</a></li>
+      </ul>
+    </div>
+
+    <div class="ten columns" >
+
+      <div class="uploadarea" id="id_uploadarea">
+          <p>ここにファイルをドラッグ＆ドロップしてください。</p>
+          <p>※最大 <strong>2Mbytes</strong> まで。</p>
+      </div>
+
+      <form action="javascript:;" class="display_none">
+          <input type="hidden" name="max_upload_size" id="id_max_upload_size" value="<?= h( \lib\Psi\Config::MAX_UPLOAD_SIZE ) ?>" />
+          <input type="file" name="file" id="id_file" />
+      </form>
+
+
+    <h4>アップロード済みファイル一覧</h4>
+
+    <table class="w100per table_list">
+        <tr>
+            <th class="text_left w030per">title</th>
+            <th class="text_left w030per">mime</th>
+            <th class="text_left w010per"></th>
+        </tr>
+            <tr>
+            <td><a href="#" target="_blank"><?= h( $file["title"] ) ?></a></td>
+            <td><?= h( $file["mime"] ) ?></td>
+            <td><button >削除</button></td>
+        </tr>
+     </table>
+
+  </div>
+
+  <div class="footer" style="margin-top: 5%">
+  </div>
+
+</div>
+
+</div>
+</body>
+</html>

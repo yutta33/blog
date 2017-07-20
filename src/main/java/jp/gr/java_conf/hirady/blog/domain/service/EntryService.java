@@ -47,6 +47,14 @@ public class EntryService {
 
   }
 
+  public List<String> getCategories() {
+
+     List<String> categories = entryMapper.selectCategories(null);
+
+     return categories;
+  }
+
+
   @Transactional(readOnly = false)
   public void entry(Entry entry) throws Exception {
 

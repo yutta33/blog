@@ -11,6 +11,8 @@ public interface EntryMapper {
 
   public LinkedHashSet<Entry> selectAll();
 
+  public List<String> selectCategories(String name);
+
   public void insert(Entry entry);
 
   public void update(Entry entry);

@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet" href="../../static/css/normalize.css" th:href="@{/css/normalize.css}" />
 <link rel="stylesheet" href="../../static/css/skeleton.css"  th:href="@{/css/skeleton.css}" />
+<link rel="stylesheet" href="../../../static/css/style.css"  th:href="@{/css/style.css}" />
 </head>
 <body>
 <div class="container">
@@ -18,7 +19,7 @@
 <h5><a href="/">top</a></h5>
 </header>
 
-<h4 th:text="${entry.title}">ブログタイトル</h4>
+<h4 th:text="${entry.title}" style="border-bottom: 1px solid hsl(216, 14%, 93%)">ブログタイトル</h4>
 
 <div class="entry_date">
     <p>
@@ -26,24 +27,20 @@
     </p>
 </div>
 </div>
-
-<div class="row">
+<br/>
+<div class="row l_bottom">
 <p class="u-full-width" th:text="${entry.body}">
 ブログ本文aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 saaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 </p>
-<p>
-    <span><a href="/category/%E6%97%A5%E8%A8%98" th:text="${entry.category}">#カテゴリ</a></span>
-</p>
+
+<span><a href="#" th:href="@{'/category/' + ${entry.category}}"  th:text="${'#' + entry.category}" th:if="${entry.category != null}" >#カテゴリ</a></span>
+
 </div>
 
 <div class="row">
-<div class="six columns" >
 <a href="#" th:href="@{'/entry/' + ${prev}}" th:if="${prev != null}">&laquo; 前へ</a>&nbsp;
-</div>
-<div class="six columns" align="right" >
-<a href="#" th:href="@{'/entry/' + ${next}}" th:if="${next != null}" >次へ&raquo;</a>&nbsp;
-</div>
+<a href="#" style="text-align:right" th:href="@{'/entry/' + ${next}}" th:if="${next != null}" >次へ&raquo;</a>&nbsp;
 </div >
 <div>
 <p ></p>
