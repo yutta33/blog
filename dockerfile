@@ -25,9 +25,13 @@ RUN apt-get update && apt-get install -y curl \
 
 # --- JupyterHub + Cカーネルのインストール ---
 RUN pip install --upgrade pip \
-    && pip install jupyterhub notebook jupyterlab jupyter-c-kernel \
-    && python3 -m jupyter_c_kernel install
+    && pip install jupyterhub notebook jupyterlab jupyter-c-kernel
 
+#RUN pip install --upgrade pip \
+#    && pip install jupyterhub notebook jupyterlab jupyter-c-kernel \
+#    && python3 -m jupyter_c_kernel install
+
+RUN install_c_kernel --sys-prefix
 
 # --- ユーザー作成 (例: testユーザー) ---
 RUN useradd -m test && echo "test:test" | chpasswd && adduser test sudo
